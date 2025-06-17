@@ -7,7 +7,7 @@ use App\Http\Controllers\PemberiController;
 use App\Http\Controllers\PenerimaController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('/login', [AuthController::class, 'showLogin']); // untuk tampilkan form login
