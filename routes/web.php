@@ -42,7 +42,12 @@ Route::middleware('checkRole:penerima')->group(function () {
     Route::get('/penerima', [PenerimaController::class, 'index']);
     Route::get('/penerima/edit/{id}', [PenerimaController::class, 'edit']);
     Route::post('/penerima/update/{id}', [PenerimaController::class, 'update']);
+
+    // Tambahan ini yang penting:
+    Route::get('/penerima/update-status/{id}', [PenerimaController::class, 'editStatus']);
+    Route::post('/penerima/update-status/{id}', [PenerimaController::class, 'updateStatus']);
 });
+
 
 
 //route admin
@@ -54,5 +59,10 @@ Route::middleware('checkRole:admin')->group(function () {
     Route::post('/admin/update/{id}', [AdminController::class, 'update']);
     Route::get('/admin/hapus/{id}', [AdminController::class, 'destroy']);
     Route::get('/admin/show/{id}', [AdminController::class, 'show']);
+    // Route::get('/admin/profile', function () {
+    //     return view('admin.profile');
+    Route::get('/admin/profile',[AdminController::class, 'profile']);
+    Route::get('/admin/data', [AdminController::class, 'data']);
+        
 
 });

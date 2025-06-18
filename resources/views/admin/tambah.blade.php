@@ -15,8 +15,10 @@
             <label class="block mb-2">Jabatan</label>
             <select name="jabatan" class="w-full border px-4 py-2 mb-4 rounded">
                 <option value="admin">Admin</option>
-                <option value="pemberi">Pemberi</option>
-                <option value="penerima">Penerima</option>
+                <option value="ceo">CEO</option>
+                <option value="karyawan">Karyawan</option>
+                <option value="staf">Staf</option>
+                <option value="manager">Manager</option>
             </select>
 
             <label class="block mb-2">Kata Sandi</label>

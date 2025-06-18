@@ -34,6 +34,12 @@ class AuthController extends Controller
             // Redirect berdasarkan role
             if ($pegawai->jabatan == 'admin') {
                 return redirect('/admin');
+            } elseif ($pegawai->jabatan == 'ceo') {
+                return redirect('/ceo');
+            } elseif ($pegawai->jabatan == 'staf') {
+                return redirect('/staf');
+            } elseif ($pegawai->jabatan == 'karyawan') {
+                return redirect('/karyawan');
             } elseif ($pegawai->jabatan == 'pemberi') {
                 return redirect('/pemberi');
             } elseif ($pegawai->jabatan == 'penerima') {

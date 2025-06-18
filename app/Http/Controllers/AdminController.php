@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    public function data(){
+           $pegawai = DB::table('tb_pegawai')->get();
+    return view('admin.data', compact('pegawai'));
+    }
+
+
+    public function profile(){
+        return view('admin.profile');
+    }
     public function index()
     {
         $pegawai = DB::table('tb_pegawai')->get();
@@ -29,7 +38,7 @@ class AdminController extends Controller
 
         DB::table('tb_login')->insert([
             'pegawai_id' => $idPegawai,
-            'kata_sandi' => $request->kata_sandi // tanpa hash seperti permintaan
+            'kata_sandi' => $request->kata_sandi 
         ]);
 
         return redirect('/admin')->with('success', 'Pegawai berhasil ditambahkan.');

@@ -10,7 +10,7 @@ class PenerimaMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (Session::get('role') !== 'penerima') {
+        if (Session::get('role') !== 'staf,karyawan') {
             return redirect('/login')->with('error', 'Akses ditolak.');
         }
 

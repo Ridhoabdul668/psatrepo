@@ -8,7 +8,7 @@
     <div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow">
         <h2 class="text-xl font-bold mb-4">Ubah Status Tugas</h2>
 
-        <form method="POST" action="/penerima/update-status/{{ $tugas->id }}">
+        <form method="POST" action="/penerima/update/{{ $tugas->id }}">
             @csrf
             <label class="block mb-2">Status</label>
             <select name="status" class="w-full border px-4 py-2 mb-4 rounded">

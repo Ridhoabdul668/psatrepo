@@ -16,7 +16,7 @@
                         <th class="px-4 py-2">Judul</th>
                         <th class="px-4 py-2">Keterangan</th>
                         <th class="px-4 py-2">Status</th>
-                        <th class="px-4 py-2">Deadline</th>
+                        <th class="px-4 py-2">Waktu</th>
                     </tr>
                 </thead>
                 <tbody>

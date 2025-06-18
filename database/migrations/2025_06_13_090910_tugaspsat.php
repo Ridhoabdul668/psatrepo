@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('tb_pegawai', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('jabatan'); // contoh: admin, pemberi_tugas, penerima_tugas
+            $table->string('jabatan'); 
             $table->timestamps();
         });
 
@@ -20,7 +20,7 @@ return new class extends Migration
         Schema::create('tb_login', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pegawai_id')->constrained('tb_pegawai')->onDelete('cascade');
-            $table->string('kata_sandi'); // bisa diganti jadi hashed password
+            $table->string('kata_sandi'); 
             $table->timestamps();
         });
 
