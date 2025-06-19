@@ -15,17 +15,28 @@
             <label class="block mb-2">Jabatan</label>
             <select name="jabatan" class="w-full border px-4 py-2 mb-4 rounded">
                 <option value="admin">Admin</option>
+                <option value="pemberi">Pemberi</option>
+                <option value="penerima">Penerima</option>
                 <option value="ceo">CEO</option>
                 <option value="karyawan">Karyawan</option>
                 <option value="staf">Staf</option>
-                <option value="manager">Manager</option>
+
             </select>
+
+            <label class="block mb-2">Email</label>
+            <input type="email" name="email" class="w-full border px-4 py-2 mb-4 rounded" required>
+
+            <label class="block mb-2">No HP</label>
+            <input type="text" name="no_hp" class="w-full border px-4 py-2 mb-4 rounded" required>
+
+            <label class="block mb-2">Alamat</label>
+            <textarea name="alamat" class="w-full border px-4 py-2 mb-4 rounded" required></textarea>
 
             <label class="block mb-2">Kata Sandi</label>
             <input type="text" name="kata_sandi" class="w-full border px-4 py-2 mb-4 rounded" required>
 
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Simpan</button>
-            <a href="/admin" class="ml-4 text-gray-600 hover:underline">Kembali</a>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded" href="/admin/data">Simpan</button>
+            <a href="/admin/data" class="ml-4 text-gray-600 hover:underline">Kembali</a>
         </form>
     </div>
 </body>

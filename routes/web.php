@@ -35,6 +35,7 @@ Route::middleware('checkRole:pemberi')->group(function () {
     Route::get('/pemberi/edit/{id}', [PemberiController::class, 'edit']);
     Route::post('/pemberi/update/{id}', [PemberiController::class, 'update']);
     Route::get('/pemberi/hapus/{id}', [PemberiController::class, 'destroy']);
+    // Route::get('/pemberi/tugas'[PemberiController::class,'tugas']);
 });
 
 //route penerima
@@ -42,8 +43,6 @@ Route::middleware('checkRole:penerima')->group(function () {
     Route::get('/penerima', [PenerimaController::class, 'index']);
     Route::get('/penerima/edit/{id}', [PenerimaController::class, 'edit']);
     Route::post('/penerima/update/{id}', [PenerimaController::class, 'update']);
-
-    // Tambahan ini yang penting:
     Route::get('/penerima/update-status/{id}', [PenerimaController::class, 'editStatus']);
     Route::post('/penerima/update-status/{id}', [PenerimaController::class, 'updateStatus']);
 });
@@ -63,6 +62,7 @@ Route::middleware('checkRole:admin')->group(function () {
     //     return view('admin.profile');
     Route::get('/admin/profile',[AdminController::class, 'profile']);
     Route::get('/admin/data', [AdminController::class, 'data']);
+    Route::get('/admin/tugas', [AdminController::class, 'tugas']);
         
 
 });

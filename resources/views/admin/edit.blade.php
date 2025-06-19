@@ -17,6 +17,9 @@
                 <option value="admin" {{ $pegawai->jabatan == 'admin' ? 'selected' : '' }}>Admin</option>
                 <option value="pemberi" {{ $pegawai->jabatan == 'pemberi' ? 'selected' : '' }}>Pemberi</option>
                 <option value="penerima" {{ $pegawai->jabatan == 'penerima' ? 'selected' : '' }}>Penerima</option>
+                <option value="ceo" {{ $pegawai->jabatan == 'ceo' ? 'selected' : '' }}>CEO</option>
+                <option value="karyawan" {{ $pegawai->jabatan == 'karyawan' ? 'selected' : '' }}>Karyawan</option>
+                <option value="staf" {{ $pegawai->jabatan == 'staf' ? 'selected' : '' }}>Staf</option>
             </select>
 
             <label class="block mb-2">Kata Sandi Baru</label>

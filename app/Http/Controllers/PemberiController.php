@@ -8,7 +8,24 @@ use Illuminate\Support\Facades\Session;
 
 class PemberiController extends Controller
 {
+
+    public function tugas()
+    {
+        $pegawai = DB::table('tb_pegawai')->where('id', session('id'))->first(); // hanya satu orang
+
+        $tugas = DB::table('tb_todo')
+            ->where('tugas_untuk', $pegawai->id)
+            ->get();
+
+        return view('admin.tugas', compact('pegawai', 'tugas'));
+    }
+
+     public function profile(){
+    $pegawai = DB::table('tb_pegawai')->where('id', session('id'))->first();
+    return view('admin.profile', compact('pegawai'));
+    }
     public function index()
+
     {
         $idPemberi = Session::get('id');
 

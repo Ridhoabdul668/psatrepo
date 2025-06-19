@@ -13,6 +13,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('jabatan'); 
+            $table->string('email')->unique();
+            $table->string('no_hp')->unique();
+            $table->string('alamat');
             $table->timestamps();
         });
 
@@ -21,6 +24,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('pegawai_id')->constrained('tb_pegawai')->onDelete('cascade');
             $table->string('kata_sandi'); 
+            $table->enum('role', ['admin', 'pemberi', 'penerima', 'staf', 'karyawan', 'ceo'])->default('karyawan'); 
             $table->timestamps();
         });
 
