@@ -7,33 +7,24 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function tugas()
+    public function profile()
     {
-        $pegawai = DB::table('tb_pegawai')->where('id', session('id'))->first(); // hanya satu orang
-
-        $tugas = DB::table('tb_todo')
-            ->where('tugas_untuk', $pegawai->id)
-            ->get();
-
-        return view('admin.tugas', compact('pegawai', 'tugas'));
+        $idPegawai = session('id');
+        $pegawai = DB::table('tb_pegawai')->where('id', $idPegawai)->first();
+        return view('admin.profile', compact('pegawai'));
     }
-
-
-    public function data(){
-           $pegawai = DB::table('tb_pegawai')->get();
-    return view('admin.data', compact('pegawai'));
+    public function pegawai()
+    {
+        $pegawai = DB::table('tb_pegawai')->get();
+        return view('admin.pegawai', compact('pegawai'));
     }
-
-
-   public function profile(){
-    $pegawai = DB::table('tb_pegawai')->where('id', session('id'))->first();
-    return view('admin.profile', compact('pegawai'));
-}
-
     public function index()
     {
-        $pegawai = DB::table('tb_pegawai')->where('id', session('id'))->first();
-        return view('admin.index', compact('pegawai'));
+        $pegawai = DB::table('tb_pegawai')
+        ->select('nama', 'jabatan', 'email','alamat')
+        ->get();
+
+        return view('admin.index',['pegawai' => $pegawai]);
     }
 
     public function create()
@@ -41,42 +32,25 @@ class AdminController extends Controller
         return view('admin.tambah');
     }
 
-   public function store(Request $request)
-{
-    $request->validate([
-        'nama' => 'required',
-        'jabatan' => 'required',
-        'email' => 'required|email|unique:tb_pegawai,email',
-        'no_hp' => 'required|unique:tb_pegawai,no_hp',
-        'alamat' => 'required',
-        'kata_sandi' => 'required|min:3'
-    ]);
+    public function store(Request $request)
+    {
+        DB::table('tb_pegawai')->insert([
+            'nama' => $request->nama,
+            'jabatan' => $request->jabatan,
+            'email' => $request->email,
+            'alamat' => $request->alamat
 
-    // Simpan ke tb_pegawai
-    DB::table('tb_pegawai')->insert([
-        'nama' => $request->nama,
-        'jabatan' => $request->jabatan,
-        'email' => $request->email,
-        'no_hp' => $request->no_hp,
-        'alamat' => $request->alamat,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ]);
+        ]);
 
-    $idPegawai = DB::getPdo()->lastInsertId();
+        $idPegawai = DB::getPdo()->lastInsertId();
 
-    // Simpan ke tb_login
-    DB::table('tb_login')->insert([
-        'pegawai_id' => $idPegawai,
-        'kata_sandi' => $request->kata_sandi, // bisa pakai bcrypt()
-        'role' => $request->jabatan, // atau bisa disesuaikan
-        'created_at' => now(),
-        'updated_at' => now(),
-    ]);
+        DB::table('tb_login')->insert([
+            'pegawai_id' => $idPegawai,
+            'kata_sandi' => $request->kata_sandi 
+        ]);
 
-    return redirect('/admin')->with('success', 'Pegawai berhasil ditambahkan.');
-}
-
+        return redirect('/admin')->with('success', 'Pegawai berhasil ditambahkan.');
+    }
 
     public function show($id)
 {
@@ -107,7 +81,7 @@ class AdminController extends Controller
             'kata_sandi' => $request->kata_sandi
         ]);
 
-        return redirect('/admin')->with('success', 'Pegawai berhasil diupdate.');
+        return redirect('/admin/pegawai')->with('success', 'Pegawai berhasil diupdate.');
     }
 
     public function destroy($id)
@@ -115,6 +89,6 @@ class AdminController extends Controller
         DB::table('tb_login')->where('pegawai_id', $id)->delete();
         DB::table('tb_pegawai')->where('id', $id)->delete();
 
-        return redirect('/admin')->with('success', 'Pegawai berhasil dihapus.');
+        return redirect('/admin/pegawai')->with('success', 'Pegawai berhasil dihapus.');
     }
 }

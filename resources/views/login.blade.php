@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
     <title>Login</title>
     <script src="https://cdn.tailwindcss.com"></script>

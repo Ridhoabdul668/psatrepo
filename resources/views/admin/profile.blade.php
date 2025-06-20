@@ -6,28 +6,21 @@
 </head>
 <body class="bg-gray-100 p-6">
     <div class="max-w-4xl mx-auto">
-        <nav class="mb-6">
-            <a href="/admin" class="text-gray-500 hover:text-gray-700 px-4 py-2 rounded">Home</a>
-            <a href="/admin/profile" class="text-gray-500 hover:text-gray-700 px-4 py-2 rounded">Profile</a>
-            <a href="/admin/data" class="text-gray-500 hover:text-gray-700 px-4 py-2 rounded">Daftar Tugas</a>
-            <a href="/admin/tugas" class="text-gray-500 hover:text-gray-700 px-4 py-2 rounded">Data Pegawai</a>
-            <a href="/logout" class="text-red-500 hover:text-red-700 px-4 py-2 rounded">Logout</a>
-        </nav>
-  <div class="p-4">
-    <h2 class="text-center text-xl font-bold mb-4">Profile</h2>
-            <div class="flex flex-wrap -mx-3 mb-6">
-                    <img src="/img" alt="Foto Profil"
-                    class="rounded-full w-32 h-32 mx-auto object-cover border border-gray-300 shadow">
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-md w-1/3 mx-auto text-center">
-                    <p><strong>Nama:</strong> {{ $pegawai->nama }}</p>
-                    <p><strong>Jabatan:</strong> {{ $pegawai->jabatan }}</p>
-                    <p><strong>Email:</strong> {{ $pegawai->email }}</p>
-                    <p><strong>No HP:</strong> {{ $pegawai->no_hp }}</p>
-                    <p><strong>Alamat:</strong> {{ $pegawai->alamat }}</p>
-                </div>
-            </div>
-            </body>
-     </html>
-            
+      <nav class="mb-6">
+        <a href="/admin" class="text-gray-600 hover:underline">Dashboard</a>
+        <a href="/admin/pegawai" class="ml-4 text-gray-600 hover:underline">Data Pegawai</a>
+        <a href="/admin/tambah" class="ml-4 text-gray-600 hover:underline">Tambah Pegawai</a>
+        <a href="/admin/profile" class="ml-4 text-gray-600 hover:underline">Profile</a>
+        <a href="/logout" class="ml-4 text-red-600 hover:underline">Logout</a>
+    </nav>
+       <h1 class="text-2xl font-bold mb-4 text-center">Profile</h1>
+        <div class="border border-gray-300 p-5 rounded-lg bg-white text-center">
+            <h2 class="text-xl font-semibold mb-2">Informasi Pegawai</h2>
+            <p class="text-gray-700">Nama: {{Session::get('nama')}}</p>
+            <p class="text-gray-700">Jabatan: {{Session::get('jabatan')}}</p>
+            <p class="text-gray-700">Email: {{Session::get('email')}}</p>
+            <p class="text-gray-700">Alamat: {{Session::get('alamat')}}</p>
+        </div><br><br>
+    </div>
+</body>
+</html>

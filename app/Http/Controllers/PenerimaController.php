@@ -19,7 +19,7 @@ class PenerimaController extends Controller
         return view('penerima.index', compact('tugas'));
     }
 
-public function edit($id)
+   public function edit($id)
 {
     $tugas = DB::table('tb_todo')->where('id', $id)->first();
     return view('penerima.edit', compact('tugas'));
@@ -28,13 +28,10 @@ public function edit($id)
 public function update(Request $request, $id)
 {
     DB::table('tb_todo')->where('id', $id)->update([
-        'tugas' => $request->tugas,
-        'deskripsi' => $request->deskripsi,
-        'deadline' => $request->deadline,
+        'status' => $request->status,
     ]);
 
-    return redirect('/penerima')->with('success', 'Status tugas berhasil diperbarui.');
+    return redirect('/penerima')->with('success', 'Status tugas diperbarui.');
 }
-
 
 }
